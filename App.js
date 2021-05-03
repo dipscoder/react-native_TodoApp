@@ -14,6 +14,7 @@ export default function App() {
           {/* This is where all the tasks will go! */}
           <Task text={'Hello'}/>
           <Task text={'JI'}/>
+          <Task text={'sfdsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfdsfgfdgdfgdfgdf'}/>
         </View>
       </View>
     </View>
@@ -33,5 +34,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
   },
-  items: {},
+  items: {
+    marginTop: 30
+  },
 });
