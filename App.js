@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {
   Keyboard,
   KeyboardAvoidingView,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -21,17 +22,36 @@ export default function App() {
     setTask(null);
   };
 
+  const completeTask = (index) => {
+    let itemCopy = [...taskItem];
+    itemCopy.splice(index, 1);
+    setTaskItem(itemCopy);
+  };
+
   return (
     <View style={styles.container}>
+      {/* Added this scroll view to enable scrolling when list gets longer than the page */}
+      {/* <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+        }}
+        keyboardShouldPersistTaps="handled"
+      /> */}
       {/* Today's Tasks */}
       <View style={styles.tasksWrapper}>
         <Text style={styles.sectionTilte}>Today's Tasks</Text>
 
         <View style={styles.items}>
           {/* This is where all the tasks will go! */}
-          {taskItem.map((item, index) => {
-            return <Task key={index} text={item} />;
-          })}
+          {
+            taskItem.map((item, index) => {
+              return (
+                <TouchableOpacity key={index}  onPress={() => completeTask(index)}>
+                  <Task text={item} /> 
+                </TouchableOpacity>
+              )
+            })
+          }
         </View>
       </View>
 
